@@ -1,0 +1,21 @@
+CarrerasCodigo de carrera: NH
+Nombre: Administracion de Empresas
+
+CarrerasCodigo de carrera: WP
+Nombre: Ensenanza de la Matematica con Entornos Tecnologicos
+
+CarrerasCodigo de carrera: JV
+Nombre: Gestion en Turismo Sostenible
+
+CarrerasCodigo de carrera: RW
+Nombre: Ingenieria en Biotecnologia
+
+CarrerasCodigo de carrera: IW
+Nombre: Ingenieria en Computacion
+
+CarrerasCodigo de carrera: NG
+Nombre: Ingenieria en Diseno Industrial
+
+CarrerasCodigo de carrera: CR
+Nombre: Administracion de Tecnologia de Informacion
+

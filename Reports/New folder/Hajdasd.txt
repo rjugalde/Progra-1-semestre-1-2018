@@ -1,0 +1,50 @@
+Codigo de profesor: 807
+Codigo de carrera: IW
+Categoria: Servicio
+Nombre: Gerardo Emilio Duque Gutierrez
+
+Codigo de profesor: 354
+Codigo de carrera: IW
+Categoria: Servicio
+Nombre: Augusto Osorno Gil
+
+Codigo de profesor: 845
+Codigo de carrera: IW
+Categoria: Servicio
+Nombre: Hector Ivan Gonzalez Castano
+
+Codigo de profesor: 120
+Codigo de carrera: IW
+Categoria: Carrera
+Nombre: Beatriz Elena Osorio Laverde
+
+Codigo de profesor: 403
+Codigo de carrera: IW
+Categoria: Servicio
+Nombre: Carlos Mario Montoya Serna
+
+Codigo de profesor: 384
+Codigo de carrera: IW
+Categoria: Carrera
+Nombre: Arturo Tabares Mora
+
+Codigo de profesor: 767
+Codigo de carrera: IW
+Categoria: Carrera
+Nombre: Maria Isabel Lopez Gaviria
+
+Codigo de profesor: 357
+Codigo de carrera: IW
+Categoria: Servicio
+Nombre: Hector Damian Mosquera Benitez
+
+Codigo de profesor: 284
+Codigo de carrera: IW
+Categoria: Carrera
+Nombre: Carlos Alberto Zarate Yepez
+
+Codigo de profesor: 449
+Codigo de carrera: IW
+Categoria: Servicio
+Nombre: Hernan Dario Hurtado Perez
+
