@@ -5,6 +5,8 @@ LGrupos=[]
 LEstuCurso=[]
 LEstudiantes=[]
 LProfesores=[]
+Lmaster = []
+
 
 import sys
 
@@ -17,6 +19,40 @@ Openestudiantes = open("Archivos/estudiantes.txt",'r')
 OpenProfesores = open("Archivos/profesores.txt",'r')
 
 #Reportes = open("REPORTE.TXT",'a')
+
+def build_masterlist():
+    master = []
+    for carrera in LCarreras:
+        cursos = getCursos(carrera[0])
+        carrera[1] = carrera[1][:len(carrera[1])-1]
+        master.append((carrera[0], carrera[1], cursos))
+    return master
+def getCursos(carrera):
+    cursos = []
+    for curso in LCursos:
+        if curso[0] == carrera:
+            grupos = getGrupos(curso[0], curso[1])
+            curso[2] = curso[2][:len(curso[2])-1]
+            cursos.append((curso[1], curso[2], grupos))
+    return cursos
+
+def getGrupos(carrera, curso):
+    grupos=[]
+    for grupo in LGrupos:
+        if grupo[0] == carrera and grupo[1] == curso:
+            estudiantes = getEstudiantes(curso, grupo[2])
+            grupo[6] = grupo[6][:len(grupo[6])-1]
+            grupos.append((grupo[2],grupo[3], grupo[4], grupo[5], grupo[6], estudiantes))
+    return grupos
+
+def getEstudiantes(curso, grupo):
+    estudiantes=[]
+    for estudiante in LEstuCurso:
+        if estudiante[1] == curso and estudiante[2] == grupo:
+            estudiante[3] = estudiante[3][:len(estudiante[3])-1]
+            estudiantes.append((estudiante[0], estudiante[3]))
+    return estudiantes
+
 
 def loadcarreras():
   for line in OpenCarreras:
@@ -269,6 +305,8 @@ loadestucurso()
 loadestudiantes()
 loadprofesores()
 
+
+
 ##reportCarreras()
 ##reportCursos()
 ##reportGrupos()
@@ -277,6 +315,9 @@ loadprofesores()
 ##reportProfesores()
 ############ MAIIIN   ##########################################
 def main():
+  global Lmaster
+  Lmaster = build_masterlist()
+
   while True:
       
       print("Que desea hacer:")
@@ -301,10 +342,74 @@ def main():
         loopReportes()
       if respuesta == "s" or respuesta == "S":
         break
-##def loopMatricular():
-##
-##def loopDesmatricular():
-##
+def loopMatricular():
+    while True:
+        print("Que desea hacer:")
+        print("1) Matricular estudiante")
+        print("S) Salir")
+
+        respuesta=input(": ")
+        if respuesta == "s" or respuesta == "S":
+          break
+
+        print("Elija la carrera: ")
+
+        for carrera in Lmaster:
+            print(carrera[1] + " -> "+carrera[0])
+
+        print()
+        carrera_i=input(": ")
+        print()
+
+        for c in Lmaster:
+            if carrera_i == c[0]:
+                carrera = c
+                break
+
+        print("Cursos disponibles: ")
+        for curso in carrera[2]:
+            print(curso[1] + " -> "+curso[0])
+
+        print()
+        curso_i = input(": ")
+        print()
+
+        for c in carrera[2]:
+            if curso_i == c[0]:
+                curso = c
+                break
+
+        print("Grupos disponibles: ")
+        for grupo in curso[2]:
+            print(grupo[0])
+
+        print()
+        grupo_i = input(": ")
+        print()
+
+        for g in curso[2]:
+            if grupo_i == g[0]:
+                print("Digite carné")
+                estudiante_i = input(": ")
+                exists = False
+                for e in LEstudiantes:
+                    if e[0] == estudiante_i:
+                        exists = True
+                        break
+                if exists:
+
+                    #VALIDACIONES: QUE NO ESTE YA MATRICULADO PREVIAMENTE, VALIDACION DE CUPO
+                    if g[2] >= g[3]+g[4]+1:
+                        g[5].append((estudiante_i, 1))
+                        print("Estudiante matriculado con exito")
+                        g[2]+=1;
+                else:
+                    print("Estudiante no existe")
+                break
+
+
+#def loopDesmatricular():
+###
 ##def loopCongelar():
 
 def loopReportes():
@@ -320,6 +425,10 @@ def loopReportes():
       print("8) Profesores de una carrera")
       print("9) Cantidad de personas atendidas por mostrador")
       print("S) Salir")
+
+      if respuesta == "s" or respuesta == "S":
+          break
+
       respuesta=input(": ")
       filename=input("Digite el nombre del archivo: ")
       filename="Reports/"+filename
@@ -402,8 +511,6 @@ def loopReportes():
 
 
 main()
-
-
 
 OpenCarreras.close()
 OpenCursos.close()
